@@ -1,0 +1,6 @@
+.cache
+.env
+.vscode
+kustomize
+secret-console.txt
+secret-minio.txt

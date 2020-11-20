@@ -1,0 +1,39 @@
+name: deploy
+on:
+  push:
+    branches:
+      - master
+
+env:
+  CLUSTER_NAME: k8s-cancentral-02-covid-aks
+  CLUSTER_RESOURCE_GROUP: k8s-cancentral-01-covid-aks
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    # Run Kustomize
+    - name: kustomize
+      uses: statcan/actions/kubectl@master
+      with:
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+        args: apply -k operator
+
+    # Run Kustomize
+    - name: kustomize
+      uses: statcan/actions/kubectl@master
+      with:
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+        args: apply -k .
+      env:
+        STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
+        PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
+        CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
+        CONSOLE_PBKDF_PASSPHRASE: "${{ secrets.CONSOLE_PBKDF_PASSPHRASE }}"
+        CONSOLE_PBKDF_SALT: "${{ secrets.CONSOLE_PBKDF_SALT }}"
+        CONSOLE_ACCESS_KEY: "${{ secrets.CONSOLE_ACCESS_KEY }}"
+        CONSOLE_SECRET_KEY: "${{ secrets.CONSOLE_SECRET_KEY }}"
+        OPENID_CLIENT_ID: "${{ secrets.OPENID_CLIENT_ID }}"
+        OPENID_CONFIG_URL: "${{ secrets.OPENID_CONFIG_URL }}"
+        DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"

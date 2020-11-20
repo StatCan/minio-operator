@@ -1,0 +1,12 @@
+- op: replace
+  path: /spec/credsSecret/name
+  value: minio-standard-tenant-1-minio
+- op: replace
+  path: /spec/serviceAccountName
+  value: minio-standard-tenant-1-pods
+- op: replace
+  path: /spec/console/consoleSecret/name
+  value: minio-standard-tenant-1-console
+- op: replace
+  path: /spec/zones/0/volumeClaimTemplate/spec/resources/requests/storage
+  value: 2000Gi
