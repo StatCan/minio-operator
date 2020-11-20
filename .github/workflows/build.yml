@@ -19,6 +19,17 @@ jobs:
       with:
         kubeconfig: ${{ secrets.KUBECONFIG }}
         args: apply -k operator
+      env:
+        STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
+        PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
+        CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
+        CONSOLE_PBKDF_PASSPHRASE: "${{ secrets.CONSOLE_PBKDF_PASSPHRASE }}"
+        CONSOLE_PBKDF_SALT: "${{ secrets.CONSOLE_PBKDF_SALT }}"
+        CONSOLE_ACCESS_KEY: "${{ secrets.CONSOLE_ACCESS_KEY }}"
+        CONSOLE_SECRET_KEY: "${{ secrets.CONSOLE_SECRET_KEY }}"
+        OPENID_CLIENT_ID: "${{ secrets.OPENID_CLIENT_ID }}"
+        OPENID_CONFIG_URL: "${{ secrets.OPENID_CONFIG_URL }}"
+        DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
 
     # Run Kustomize
     - name: kustomize
