@@ -25,9 +25,9 @@ yq -d5 w -i ${CONFIG_FILE} 'spec.env[3].value' ${OPENID_CONFIG_URL}
 export DOMAIN_NAME="${DOMAIN_NAME:=default.example.ca}"
 for patch in instances/*/tenant*/patch-minio-ing*; do
   val=$(yq r $patch '[0].value')
-  yq w -i $patch '[0].value' ${val/example.ca/$DOMAIN_NAME}
+  yq w -i $patch '[0].value' ${val/default.example.ca/$DOMAIN_NAME}
 done
 for patch in instances/*/tenant*/patch-console-ing*; do
   val=$(yq r $patch '[0].value')
-  yq w -i $patch '[0].value' ${val/example.ca/$DOMAIN_NAME}
+  yq w -i $patch '[0].value' ${val/default.example.ca/$DOMAIN_NAME}
 done
