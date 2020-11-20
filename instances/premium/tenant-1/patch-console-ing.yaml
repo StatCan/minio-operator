@@ -3,4 +3,4 @@
   value: minio-console-premium-tenant-1.example.ca
 - op: replace
   path: /spec/rules/0/http/paths/0/backend/serviceName
-  value: minio-premium-tenant-1-console
+  value: minio-premium-tenant-1-minio-console
