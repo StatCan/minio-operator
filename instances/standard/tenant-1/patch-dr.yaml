@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/host
+  value: "*.minio-standard-tenant-1.svc.cluster.local"

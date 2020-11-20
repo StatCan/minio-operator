@@ -89,6 +89,12 @@ patchesJson6902:
     name: minio-console
   path: patch-console-ing.yaml
 - target:
+    group: networking.istio.io
+    version: v1alpha3
+    kind: DestinationRule
+    name: minio
+  path: patch-dr.yaml
+- target:
     group: minio.min.io
     version: v1
     kind: Tenant
