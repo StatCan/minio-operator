@@ -1,6 +1,6 @@
 # Minio
 
-Install and configure the [MinIO operator](https://github.com/minio/minio-operator) using Kustomize.
+Install and configure the [MinIO Operator](https://github.com/minio/minio-operator) using Kustomize.
 
 ## Tenants
 
