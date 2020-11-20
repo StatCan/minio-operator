@@ -78,13 +78,13 @@ patchesJson6902:
   path: patch-ns.yaml
 - target:
     group: networking.k8s.io
-    version: v1
+    version: v1beta1
     kind: Ingress
     name: minio
   path: patch-minio-ing.yaml
 - target:
     group: networking.k8s.io
-    version: v1
+    version: v1beta1
     kind: Ingress
     name: minio-console
   path: patch-console-ing.yaml

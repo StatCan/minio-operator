@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: minio
 ---
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: minio
@@ -14,15 +14,11 @@ spec:
   - host: minio.example.ca
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: minio
-            port:
-              number: 9000
+      - backend:
+          serviceName: minio
+          servicePort: 9000
 ---
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: minio-console
@@ -33,13 +29,9 @@ spec:
   - host: minio-console.example.ca
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: minio
-            port:
-              number: 9000
+      - backend:
+          serviceName: minio
+          servicePort: 9000
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
