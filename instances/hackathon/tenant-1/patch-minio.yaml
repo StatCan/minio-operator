@@ -9,4 +9,4 @@
   value: minio-hackathon-tenant-1-console
 - op: replace
   path: /spec/zones/0/volumeClaimTemplate/spec/resources/requests/storage
-  value: 2000Gi
+  value: 200Gi
