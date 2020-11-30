@@ -4,11 +4,14 @@ Install and configure the [MinIO Operator](https://github.com/minio/minio-operat
 
 ## Tenants
 
+* Hackathon // HDD @ 200Gi
 * Standard // HDD @ 2000Gi
 * Premium // SSD @ 200Gi
 
 ## Domains
 
+* minio-hackathon-tenant-1.example.ca
+* minio-console-hackathon-tenant-1.example.ca
 * minio-standard-tenant-1.example.ca
 * minio-console-standard-tenant-1.example.ca
 * minio-premium-tenant-1.example.ca

@@ -1,0 +1,6 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: minio-console-hackathon-tenant-1.example.ca
+- op: replace
+  path: /spec/rules/0/http/paths/0/backend/serviceName
+  value: minio-hackathon-tenant-1-minio-console

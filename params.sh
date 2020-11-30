@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Default Credentials
+export HACKATHON_TENANT_1="${HACKATHON_TENANT_1:=DEFAULT}"
 export STANDARD_TENANT_1="${STANDARD_TENANT_1:=DEFAULT}"
 export PREMIUM_TENANT_1="${PREMIUM_TENANT_1:=DEFAULT}"
 export OPENID_CLIENT_ID="${OPENID_CLIENT_ID:=default}"
@@ -12,6 +13,8 @@ export CONSOLE_PBKDF_SALT="${CONSOLE_PBKDF_SALT:-SECRET}"
 export CONSOLE_ACCESS_KEY="${CONSOLE_ACCESS_KEY:-YOURCONSOLEACCESS}"
 export CONSOLE_SECRET_KEY="${CONSOLE_SECRET_KEY:-YOURCONSOLESECRET}"
 
+envsubst < instances/hackathon/tenant-1/secret-console.tmpl > instances/hackathon/tenant-1/secret-console.txt
+envsubst < instances/hackathon/tenant-1/secret-minio.tmpl > instances/hackathon/tenant-1/secret-minio.txt
 envsubst < instances/standard/tenant-1/secret-console.tmpl > instances/standard/tenant-1/secret-console.txt
 envsubst < instances/standard/tenant-1/secret-minio.tmpl > instances/standard/tenant-1/secret-minio.txt
 envsubst < instances/premium/tenant-1/secret-console.tmpl > instances/premium/tenant-1/secret-console.txt
