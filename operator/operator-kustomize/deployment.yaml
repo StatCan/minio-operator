@@ -14,9 +14,11 @@ spec:
         name: minio-operator
     spec:
       serviceAccountName: minio-operator
+      imagePullSecrets:
+        - name: k8scc01covidacr-registry-connection
       containers:
         - name: minio-operator
-          image: minio/k8s-operator:v3.0.28
+          image: k8scc01covidacr.azurecr.io/minio-operator:v3.0.29
           imagePullPolicy: IfNotPresent
           resources:
             requests:
