@@ -12,4 +12,4 @@
   value: 200Gi
 - op: replace
   path: /spec/zones/0/affinity/podAntiAffinity/preferredDuringSchedulingIgnoredDuringExecution/0/podAffinityTerm/labelSelector/matchExpressions/0/values/0
-  value: minio-hackathon-tenant-1
+  value: minio-hackathon-tenant-1-minio
