@@ -13,3 +13,6 @@
 - op: add
   path: /spec/zones/0/volumeClaimTemplate/storageClassName
   value: managed-premium
+- op: replace
+  path: /spec/zones/0/affinity/podAntiAffinity/preferredDuringSchedulingIgnoredDuringExecution/0/podAffinityTerm/labelSelector/matchExpressions/0/values/0
+  value: minio-premium-tenant-1

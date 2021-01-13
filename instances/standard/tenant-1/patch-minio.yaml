@@ -10,3 +10,6 @@
 - op: replace
   path: /spec/zones/0/volumeClaimTemplate/spec/resources/requests/storage
   value: 2000Gi
+- op: replace
+  path: /spec/zones/0/affinity/podAntiAffinity/preferredDuringSchedulingIgnoredDuringExecution/0/podAffinityTerm/labelSelector/matchExpressions/0/values/0
+  value: minio-standard-tenant-1
