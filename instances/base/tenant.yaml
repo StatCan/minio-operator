@@ -130,8 +130,11 @@ spec:
   #      memory: 16Gi
   resources:
     requests:
-      memory: 512Mi
-      cpu: 250m
+      memory: 20Gi
+      cpu: 2
+    limits:
+      memory: 32Gi
+      cpu: 5
   ## Mount path where PV will be mounted inside container(s).
   mountPath: /export
   ## Sub path inside Mount path where MinIO stores data.
