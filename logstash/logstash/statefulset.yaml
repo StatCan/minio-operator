@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: minio-audit-logstash
+spec:
+  serviceName: minio-audit-logstash-headless
+  selector:
+    matchLabels: {}
+  template:
+    metadata:
+      labels: {}
+    spec:
+      serviceAccountName: minio-audit-logstash
+      containers:
+      - name: logstash
+        image: docker.elastic.co/logstash/logstash-oss:7.10.2
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: LS_JAVA_OPTS
+          value: -Xmx1g -Xms1g
+        envFrom:
+        - secretRef:
+            name: minio-audit-logstash
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        - containerPort: 9600
+          name: http-status
+          protocol: TCP
+        volumeMounts:
+          - mountPath: /usr/share/logstash/pipeline/logstash.conf
+            name: logstash-pipeline
+            subPath: logstash.conf
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http-status
+            scheme: HTTP
+          initialDelaySeconds: 300
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http-status
+            scheme: HTTP
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 3
+          timeoutSeconds: 5
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+          runAsUser: 1000
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+      volumes:
+      - name: logstash-pipeline
+        configMap:
+          name: minio-audit-logstash-pipeline
+  volumeClaimTemplates: []

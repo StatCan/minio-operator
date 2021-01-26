@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minio-audit-logstash-pipeline
+data:
+  logstash.conf: |
+    input {
+      http {
+        port => 8080
+      }
+    }
+
+    filter {
+      date {
+        match => ["time", "ISO8601"]
+      }
+    }
+
+    output {
+      elasticsearch {
+        hosts => ["${AUDITLOGS_HOST}"]
+        index => "minio-audit-%{+YYYY.MM.dd}"
+        manage_template => true
+        template_name => "minio-audit"
+        user => "${AUDITLOGS_USER}"
+        password => "${AUDITLOGS_PASSWORD}"
+      }
+      stdout {}
+    }
