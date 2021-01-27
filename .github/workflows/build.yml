@@ -14,7 +14,7 @@ jobs:
     - uses: actions/checkout@master
 
     # Run Kustomize
-    - name: kustomize
+    - name: operator kustomize
       uses: statcan/actions/kubectl@master
       with:
         kubeconfig: ${{ secrets.KUBECONFIG }}
@@ -30,10 +30,35 @@ jobs:
         CONSOLE_SECRET_KEY: "${{ secrets.CONSOLE_SECRET_KEY }}"
         OPENID_CLIENT_ID: "${{ secrets.OPENID_CLIENT_ID }}"
         OPENID_CONFIG_URL: "${{ secrets.OPENID_CONFIG_URL }}"
+        AUDITLOGS_HOST: "${{ secrets.AUDITLOGS_HOST }}"
+        AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
+        AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
+        DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
+
+    # Run kustomize
+    - name: logstash kustomize
+      uses: statcan/actions/kubectl@master
+      with:
+        kubeconfig: ${{ secrets.KUBECONFIG }}
+        args: apply -k logstash
+      env:
+        HACKATHON_TENANT_1: "${{ secrets.HACKATHON_TENANT_1 }}"
+        STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
+        PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
+        CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
+        CONSOLE_PBKDF_PASSPHRASE: "${{ secrets.CONSOLE_PBKDF_PASSPHRASE }}"
+        CONSOLE_PBKDF_SALT: "${{ secrets.CONSOLE_PBKDF_SALT }}"
+        CONSOLE_ACCESS_KEY: "${{ secrets.CONSOLE_ACCESS_KEY }}"
+        CONSOLE_SECRET_KEY: "${{ secrets.CONSOLE_SECRET_KEY }}"
+        OPENID_CLIENT_ID: "${{ secrets.OPENID_CLIENT_ID }}"
+        OPENID_CONFIG_URL: "${{ secrets.OPENID_CONFIG_URL }}"
+        AUDITLOGS_HOST: "${{ secrets.AUDITLOGS_HOST }}"
+        AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
+        AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
         DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
 
     # Run Kustomize
-    - name: kustomize
+    - name: instances kustomize
       uses: statcan/actions/kubectl@master
       with:
         kubeconfig: ${{ secrets.KUBECONFIG }}
@@ -49,4 +74,7 @@ jobs:
         CONSOLE_SECRET_KEY: "${{ secrets.CONSOLE_SECRET_KEY }}"
         OPENID_CLIENT_ID: "${{ secrets.OPENID_CLIENT_ID }}"
         OPENID_CONFIG_URL: "${{ secrets.OPENID_CONFIG_URL }}"
+        AUDITLOGS_HOST: "${{ secrets.AUDITLOGS_HOST }}"
+        AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
+        AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
         DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
