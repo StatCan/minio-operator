@@ -12,6 +12,9 @@ export CONSOLE_PBKDF_PASSPHRASE="${CONSOLE_PBKDF_PASSPHRASE:-SECRET}"
 export CONSOLE_PBKDF_SALT="${CONSOLE_PBKDF_SALT:-SECRET}"
 export CONSOLE_ACCESS_KEY="${CONSOLE_ACCESS_KEY:-YOURCONSOLEACCESS}"
 export CONSOLE_SECRET_KEY="${CONSOLE_SECRET_KEY:-YOURCONSOLESECRET}"
+export AUDITLOGS_HOST="${AUDITLOGS_HOST:-http://localhost:9200}"
+export AUDITLOGS_USER="${AUDITLOGS_USER:-AUDITLOGS_USER}"
+export AUDITLOGS_PASSWORD="${AUDITLOGS_PASSWORD:-AUDITLOGS_PASSWORD}"
 
 envsubst < instances/hackathon/tenant-1/secret-console.tmpl > instances/hackathon/tenant-1/secret-console.txt
 envsubst < instances/hackathon/tenant-1/secret-minio.tmpl > instances/hackathon/tenant-1/secret-minio.txt
@@ -19,6 +22,8 @@ envsubst < instances/standard/tenant-1/secret-console.tmpl > instances/standard/
 envsubst < instances/standard/tenant-1/secret-minio.tmpl > instances/standard/tenant-1/secret-minio.txt
 envsubst < instances/premium/tenant-1/secret-console.tmpl > instances/premium/tenant-1/secret-console.txt
 envsubst < instances/premium/tenant-1/secret-minio.tmpl > instances/premium/tenant-1/secret-minio.txt
+
+envsubst < logstash/secret.tmpl > logstash/secret.env
 
 # OIDC
 yq -d5 w -i ${CONFIG_FILE} 'spec.env[2].value' ${OPENID_CLIENT_ID}
