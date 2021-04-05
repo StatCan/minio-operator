@@ -21,6 +21,5 @@ kind: Kustomization
 # crucial ways (image tags, a few server arguments,
 # etc. that differ from the common base).
 bases:
-- instances/hackathon/tenant-1
 - instances/standard/tenant-1
 - instances/premium/tenant-1
