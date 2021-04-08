@@ -20,7 +20,6 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
         args: apply -k operator
       env:
-        HACKATHON_TENANT_1: "${{ secrets.HACKATHON_TENANT_1 }}"
         STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
         PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
         CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
@@ -34,6 +33,7 @@ jobs:
         AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
         AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
         DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
+        IMAGE_PULL_SECRET: "${{ secrets.IMAGE_PULL_SECRET }}"
 
     # Run kustomize
     - name: logstash kustomize
@@ -42,7 +42,6 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
         args: apply -k logstash
       env:
-        HACKATHON_TENANT_1: "${{ secrets.HACKATHON_TENANT_1 }}"
         STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
         PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
         CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
@@ -56,6 +55,7 @@ jobs:
         AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
         AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
         DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
+        IMAGE_PULL_SECRET: "${{ secrets.IMAGE_PULL_SECRET }}"
 
     # Run Kustomize
     - name: instances kustomize
@@ -64,7 +64,6 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
         args: apply -k .
       env:
-        HACKATHON_TENANT_1: "${{ secrets.HACKATHON_TENANT_1 }}"
         STANDARD_TENANT_1: "${{ secrets.STANDARD_TENANT_1 }}"
         PREMIUM_TENANT_1: "${{ secrets.PREMIUM_TENANT_1 }}"
         CONSOLE_HMAC_JWT_SECRET: "${{ secrets.CONSOLE_HMAC_JWT_SECRET }}"
@@ -78,3 +77,4 @@ jobs:
         AUDITLOGS_USER: "${{ secrets.AUDITLOGS_USER }}"
         AUDITLOGS_PASSWORD: "${{ secrets.AUDITLOGS_PASSWORD }}"
         DOMAIN_NAME: "${{ secrets.DOMAIN_NAME }}"
+        IMAGE_PULL_SECRET: "${{ secrets.IMAGE_PULL_SECRET }}"

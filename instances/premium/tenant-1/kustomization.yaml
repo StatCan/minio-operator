@@ -46,6 +46,12 @@ secretGenerator:
   # you can only specify one env file per secret.
   env: secret-console.txt
   type: Opaque
+- name: image-pull-secret
+  # env is a path to a file to read lines of key=val
+  # you can only specify one env file per secret.
+  env: secret-image-pull-secret.txt
+  type: Opaque
+
 
 # Each entry in this list should resolve to
 # a kubernetes object and a JSON patch that will be applied
