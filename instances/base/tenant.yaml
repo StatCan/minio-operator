@@ -74,6 +74,8 @@ spec:
   ## Registry location and Tag to download MinIO Server image
   image: k8scc01covidacr.azurecr.io/minio/minio:45627b98
   imagePullPolicy: IfNotPresent
+  imagePullSecret:
+    name: image-pull-secret
   ## Secret with credentials to be used by MinIO Tenant.
   ## Refers to the secret object created above.
   credsSecret:

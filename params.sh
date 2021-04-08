@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Default Credentials
-export HACKATHON_TENANT_1="${HACKATHON_TENANT_1:=DEFAULT}"
 export STANDARD_TENANT_1="${STANDARD_TENANT_1:=DEFAULT}"
 export PREMIUM_TENANT_1="${PREMIUM_TENANT_1:=DEFAULT}"
 export OPENID_CLIENT_ID="${OPENID_CLIENT_ID:=default}"
@@ -15,13 +14,14 @@ export CONSOLE_SECRET_KEY="${CONSOLE_SECRET_KEY:-YOURCONSOLESECRET}"
 export AUDITLOGS_HOST="${AUDITLOGS_HOST:-http://localhost:9200}"
 export AUDITLOGS_USER="${AUDITLOGS_USER:-AUDITLOGS_USER}"
 export AUDITLOGS_PASSWORD="${AUDITLOGS_PASSWORD:-AUDITLOGS_PASSWORD}"
+export IMAGE_PULL_SECRET="${IMAGE_PULL_SECRET:-IMAGE_PULL_SECRET}"
 
-envsubst < instances/hackathon/tenant-1/secret-console.tmpl > instances/hackathon/tenant-1/secret-console.txt
-envsubst < instances/hackathon/tenant-1/secret-minio.tmpl > instances/hackathon/tenant-1/secret-minio.txt
 envsubst < instances/standard/tenant-1/secret-console.tmpl > instances/standard/tenant-1/secret-console.txt
 envsubst < instances/standard/tenant-1/secret-minio.tmpl > instances/standard/tenant-1/secret-minio.txt
+envsubst < instances/standard/tenant-1/secret-image-pull-secret.tmpl > instances/standard/tenant-1/secret-image-pull-secret.txt
 envsubst < instances/premium/tenant-1/secret-console.tmpl > instances/premium/tenant-1/secret-console.txt
 envsubst < instances/premium/tenant-1/secret-minio.tmpl > instances/premium/tenant-1/secret-minio.txt
+envsubst < instances/premium/tenant-1/secret-image-pull-secret.tmpl > instances/premium/tenant-1/secret-image-pull-secret.txt
 
 envsubst < logstash/secret.tmpl > logstash/secret.env
 

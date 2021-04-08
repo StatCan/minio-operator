@@ -1,4 +1,7 @@
 - op: replace
+  path: /spec/imagePullSecret/name
+  value: minio-standard-tenant-1-image-pull-secret
+- op: replace
   path: /spec/credsSecret/name
   value: minio-standard-tenant-1-minio
 - op: replace
