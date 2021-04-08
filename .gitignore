@@ -4,4 +4,5 @@
 kustomize
 secret-console.txt
 secret-minio.txt
+secret-image-pull-secret.txt
 logstash/secret.env
