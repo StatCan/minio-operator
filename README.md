@@ -221,4 +221,4 @@ docker pull <IMAGE_NAME>
 # load image to kind
 kind load docker-image <IMAGE_NAME> --name my-cluster
 ```
-NOw, wait for pods to terminate and restart then port-forward and open in browser.
+Now, wait for pods to terminate and restart then port-forward and open in browser.
