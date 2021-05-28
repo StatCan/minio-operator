@@ -137,7 +137,7 @@ kubectl get tenants.minio.min.io minio-tenant-1 -n minio-tenant-1 -o json | jq '
 
 You should see something like `minio/minio:RELEASE.2021-02-14T04-01-33Z`.
 
-Check the svc, pvc and pods in your -n minio-tenant-1 namespace to make sure everything is running right with `kubectl get ... -n minio-tennat-1`.
+Check the svc, pvc and pods in your -n minio-tenant-1 namespace to make sure everything is running right with `kubectl get ... -n minio-tenant-1`.
 
 **check minio image from Operator UI:**
 1. Open another terminal and run `kubectl minio proxy -n minio-operator`
@@ -201,8 +201,13 @@ Once everyting is back up, port-forward and open in browser.
 ```bash
 kubectl \
 -n minio-tenant-1 patch tenants.minio.min.io minio-tenant-1 --type='json' \
+-p='[{"op": "replace", "path": "/spec/imagePullPolicy", "value":"IfNotPresent"}]'
+
+kubectl \
+-n minio-tenant-1 patch tenants.minio.min.io minio-tenant-1 --type='json' \
 -p='[{"op": "replace", "path": "/spec/image", "value":"YOUR-NEW-IMAGE"}]'
 ```
+
 
 Verify image change:
 
