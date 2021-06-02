@@ -72,7 +72,7 @@ metadata:
 #  name: my-custom-scheduler
 spec:
   ## Registry location and Tag to download MinIO Server image
-  image: k8scc01covidacr.azurecr.io/minio/minio:11b58498
+  image: k8scc01covidacr.azurecr.io/minio/minio:6379f1af
   imagePullPolicy: IfNotPresent
   imagePullSecret:
     name: image-pull-secret
