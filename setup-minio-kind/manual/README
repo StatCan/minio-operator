@@ -1,1 +1,0 @@
-Terraform wasn't playing well with the helm chart because some of the resources already exist (kind defaults).
