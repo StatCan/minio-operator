@@ -6,3 +6,6 @@ secret-console.txt
 secret-minio.txt
 secret-image-pull-secret.txt
 logstash/secret.env
+setup-minio-kind/logs.log
+logs.log
+kind

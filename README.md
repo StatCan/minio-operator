@@ -94,7 +94,7 @@ Your output should be something like this for the pods:
 
 ```bash
 # clone this repo if you haven't already
-cd minio-operator/minio-kind
+cd minio-operator/setup-minio-kind
 # create the pvc provisioner
 helm template ./manual/provisioner | kubectl apply -f -
 ```
@@ -220,10 +220,13 @@ If it is a custom-built image not in a public dockerhub registry, make sure you 
 
 ```bash
 # if using from statcan private docker registry make sure you're logged in so you can pull images:
-az acr login <REGISTRY_NAME>
+az acr login --name <REGISTRY_NAME>
 docker pull <IMAGE_NAME>
 
 # load image to kind
 kind load docker-image <IMAGE_NAME> --name my-cluster
 ```
 Now, wait for pods to terminate and restart then port-forward and open in browser.
+
+*Note:*
+Make sure you are using the right minio plugin as the one being used in production. As of right now we use minio.io/v1 (v2 is now the latest). When you install it using krew with `kubectl krew install minio` you can't specify versions as krew does not support that so instead of this line, install it with `kubectl krew install --manifest=minio.yaml` - you can find the version you're looking for in krew-index repo (minio v3.0.29 was here [minio.yaml](https://github.com/kubernetes-sigs/krew-index/blob/5bc4fc52d4b70480150c53ea6c0bd9d6a42cb2b3/plugins/minio.yaml)).
