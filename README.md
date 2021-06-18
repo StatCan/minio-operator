@@ -75,7 +75,7 @@ kubectl config current-context
 
 ```bash
 kubectl krew update
-kubectl krew install minio
+kubectl krew install minio  # see note at the bottom of this readme for minio plugin version
 kubectl minio init
 ```
 
@@ -228,5 +228,5 @@ kind load docker-image <IMAGE_NAME> --name my-cluster
 ```
 Now, wait for pods to terminate and restart then port-forward and open in browser.
 
-*Note:*
+### Note:
 Make sure you are using the right minio plugin as the one being used in production. As of right now we use minio.io/v1 (v2 is now the latest). When you install it using krew with `kubectl krew install minio` you can't specify versions as krew does not support that so instead of this line, install it with `kubectl krew install --manifest=minio.yaml` - you can find the version you're looking for in krew-index repo (minio v3.0.29 was here [minio.yaml](https://github.com/kubernetes-sigs/krew-index/blob/5bc4fc52d4b70480150c53ea6c0bd9d6a42cb2b3/plugins/minio.yaml)).
